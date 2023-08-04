@@ -50,28 +50,31 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
           cp .config ./lede/.config
           mv ./lede/* ./
-          #1. Modify default IP
+          # 1. Modify default IP
           sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-          #2. Clear the login password
-          sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
-      - name: Install Helloword
+          # 2. Clear the login password
+          # sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+      - name: Install kenzo_packages
         run: |
-          echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
-      - name: Install OpenClash
-        run: |
-          mkdir package/luci-app-openclash
-          cd package/luci-app-openclash
-          git init
-          git remote add -f origin https://github.com/vernesong/OpenClash.git
-          git config core.sparsecheckout true
-          echo "luci-app-openclash" >> .git/info/sparse-checkout
-          git pull --depth 1 origin master
-          git branch --set-upstream-to=origin/master master
-          pushd luci-app-openclash/tools/po2lmo
-          make && sudo make install
-          popd
+          # echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
+          sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+          sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+      # - name: Install OpenClash
+      #   run: |
+      #     mkdir package/luci-app-openclash
+      #     cd package/luci-app-openclash
+      #     git init
+      #     git remote add -f origin https://github.com/vernesong/OpenClash.git
+      #     git config core.sparsecheckout true
+      #     echo "luci-app-openclash" >> .git/info/sparse-checkout
+      #     git pull --depth 1 origin master
+      #     git branch --set-upstream-to=origin/master master
+      #     pushd luci-app-openclash/tools/po2lmo
+      #     make && sudo make install
+      #     popd
       - name: Update feeds
         run: |
+          git pull
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           ./scripts/feeds install -a
