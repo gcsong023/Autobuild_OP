@@ -31,7 +31,7 @@ jobs:
 
       - name: Download lede
         run: |
-          git clone https://github.com/coolsnowwolf/lede
+          git clone -b openwrt-23.05 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt lede
           cp .config ./lede/.config
           mv ./lede/* ./
           #1. Modify default IP
