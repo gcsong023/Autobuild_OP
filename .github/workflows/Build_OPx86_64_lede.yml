@@ -47,8 +47,9 @@ jobs:
 
       - name: Download lede
         run: |
-          git clone -b master https://github.com/coolsnowwolf/lede 
-          mv ./lede/* ./
+          git clone -b master https://github.com/coolsnowwolf/lede lede
+          cd lede
+          echo "LEDE_PATH=$PWD" >> $GITHUB_ENV
           # 1. Modify default IP
           sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
           # 2. Clear the login password
@@ -59,6 +60,7 @@ jobs:
 
       - name: Update feeds
         run: |
+          cd $LEDE_PATH
           git pull
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -456,16 +458,19 @@ jobs:
           ' >> .config
       - name: Costom configure file
         run: |
+          cd $LEDE_PATH
           make defconfig
           rm -rf .config.old
       - name: Download package source code
         run: |
+          cd $LEDE_PATH
           make download -j$(nproc)
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
 
       - name: Compile firmware
         run: |
+          cd $LEDE_PATH
           make -j$(nproc) V=99 || make -j1 V=s
           echo "======================="
           echo "Space usage:"
