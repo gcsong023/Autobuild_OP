@@ -5,7 +5,7 @@
 #
 # Copyright (C) 2020 KFERMercer
 #
-name: Build_x86_64
+name: Build_x86_64_lede
 on: 
   repository_dispatch:
   workflow_dispatch:
@@ -47,7 +47,7 @@ jobs:
 
       - name: Download lede
         run: |
-          git clone -b master https://github.com/coolsnowwolf/lede .
+          git clone -b master https://github.com/coolsnowwolf/lede 
           # mv ./lede/* ./
           # 1. Modify default IP
           sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
@@ -73,7 +73,7 @@ jobs:
           CONFIG_DOCKER_OPTIONAL_FEATURES=y
           CONFIG_DOCKER_STO_EXT4=y
           # CONFIG_FEED_smpackage is not set
-          CONFIG_GRUB_TITLE="HelloSonguo"
+          CONFIG_GRUB_TITLE="Hello lede!"
           CONFIG_IMAGEOPT=y
           CONFIG_IPTABLES_CONNLABEL=y
           CONFIG_IPTABLES_NFTABLES=y
@@ -457,6 +457,7 @@ jobs:
       - name: Costom configure file
         run: |
           make defconfig
+          rm -rf .config.old
       - name: Download package source code
         run: |
           make download -j$(nproc)
@@ -465,7 +466,7 @@ jobs:
 
       - name: Compile firmware
         run: |
-          make -j$(nproc) || make -j1 V=s
+          make -j$(nproc) V=99 || make -j1 V=s
           echo "======================="
           echo "Space usage:"
           echo "======================="
