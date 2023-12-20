@@ -5,11 +5,12 @@
 #
 # Copyright (C) 2020 KFERMercer
 #
-name: Build_x86_64
+name: X86_64 OpenWrt
 
-on: 
-  repository_dispatch:
+on:
   workflow_dispatch:
+  # schedule:
+  #   - cron: 0 9 */7 * *
   
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
@@ -32,7 +33,6 @@ jobs:
 
     - name: Clone Source Code
       run: |
-        df -hT $GITHUB_WORKSPACE
         git clone -b $REPO_BRANCH --single-branch --filter=blob:none  $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
