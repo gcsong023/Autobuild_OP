@@ -84,7 +84,7 @@ jobs:
         COMMIT_HASH=$(git show -s --date=short --format="hash: %H")
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
         cp $VERMAGIC $OPENWRT_PATH/vermagic
-        cp $KERNEL_DEFAULTS $OPENWRT_PATH/include/
+        cp $KERNEL_DEFAULTS $OPENWRT_PATH/include/kernel-defaults.mk
         grep -i vermagic include/kernel-defaults.mk
 
     - name: Generate Variables
