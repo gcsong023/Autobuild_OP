@@ -89,8 +89,8 @@ jobs:
         cp $CONFIG_FILE $OPENWRT_PATH/.config
         cp $VERMAGIC_FILE $OPENWRT_PATH/vermagic
         cp $KERNEL_DEFAULTS_FILE $OPENWRT_PATH/include/kernel-defaults.mk
-        grep -i vermagic include/kernel-defaults.mk
         cd $OPENWRT_PATH
+        grep -i vermagic include/kernel-defaults.mk
         make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
