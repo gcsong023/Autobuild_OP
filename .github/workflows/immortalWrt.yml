@@ -16,7 +16,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: v23.05.1
   CONFIG_FILE: immortalwrtx86_64.config
-  VERMAGIC_FILE: vermagic
+  VERMAGIC_FILE: v23_05_1.vermagic
   CLASH_KERNEL: amd64
   KERNEL_DEFAULTS_FILE: kernel-defaults.mk
   CACHE_TOOLCHAIN: true
@@ -83,13 +83,13 @@ jobs:
         echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
         COMMIT_HASH=$(git show -s --date=short --format="hash: %H")
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
-        cp $VERMAGIC_FILE $OPENWRT_PATH/vermagic
-        cp $KERNEL_DEFAULTS_FILE $OPENWRT_PATH/include/kernel-defaults.mk
-        grep -i vermagic include/kernel-defaults.mk
 
     - name: Generate Variables
       run: |
         cp $CONFIG_FILE $OPENWRT_PATH/.config
+        cp $VERMAGIC_FILE $OPENWRT_PATH/vermagic
+        cp $KERNEL_DEFAULTS_FILE $OPENWRT_PATH/include/kernel-defaults.mk
+        grep -i vermagic include/kernel-defaults.mk
         cd $OPENWRT_PATH
         make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
@@ -111,21 +111,22 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         sed -i '$a src-git kiddin https://github.com/kiddin9/openwrt-packages' feeds.conf.default
+        sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
         git pull
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Load Custom Configuration
-      run: |
-        [ -e files ] && mv files $OPENWRT_PATH/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
+    # - name: Load Custom Configuration
+    #   run: |
+    #     [ -e files ] && mv files $OPENWRT_PATH/files
+    #     [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         
-        cd $OPENWRT_PATH
+    #     cd $OPENWRT_PATH
 
-        sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
+    #     sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+    #     ./scripts/feeds update -a
+    #     ./scripts/feeds install -a
 
     - name: Download DL Package
       run: |
