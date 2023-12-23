@@ -16,9 +16,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: v23.05.1
   CONFIG_FILE: immortalwrtx86_64.config
-  VERMAGIC: vermagic
+  VERMAGIC_FILE: vermagic
   CLASH_KERNEL: amd64
-  KERNEL_DEFAULTS: kernel-defaults.mk
+  KERNEL_DEFAULTS_FILE: kernel-defaults.mk
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -83,8 +83,8 @@ jobs:
         echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
         COMMIT_HASH=$(git show -s --date=short --format="hash: %H")
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
-        cp $VERMAGIC $OPENWRT_PATH/vermagic
-        cp $KERNEL_DEFAULTS $OPENWRT_PATH/include/kernel-defaults.mk
+        cp $VERMAGIC_FILE $OPENWRT_PATH/vermagic
+        cp $KERNEL_DEFAULTS_FILE $OPENWRT_PATH/include/kernel-defaults.mk
         grep -i vermagic include/kernel-defaults.mk
 
     - name: Generate Variables
