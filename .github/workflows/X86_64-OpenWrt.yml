@@ -154,10 +154,11 @@ jobs:
         cp $OPENWRT_PATH/.config build.config
         # mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         # tar -zcf Packages.tar.gz packages
-        find $OPENWRT_PATH/bin -name *.ipk -exec tar -zcf Packages.tar.gz {} \;
+        find $OPENWRT_PATH/bin -name *.ipk -exec mv -f {} packages \;
+        tar -zcf Packages.tar.gz packages
         find $OPENWRT_PATH/bin -name *.ipk -exec rm -rf {} \;
-        # rm -rf packages feeds.buildinfo version.buildinfo
-        rm -rf feeds.buildinfo version.buildinfo
+        rm -rf packages feeds.buildinfo version.buildinfo
+        # rm -rf feeds.buildinfo version.buildinfo
         echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -185,7 +186,7 @@ jobs:
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🚀 内核版本: ${{ env.KERNEL }}
           - 🌐 默认地址: 192.168.5.1
-          - 🔑 默认密码: password
+          - 🔑 默认密码: password or none
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
           - ${{ env.COMMIT_AUTHOR }}
