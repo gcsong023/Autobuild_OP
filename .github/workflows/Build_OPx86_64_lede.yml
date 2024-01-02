@@ -56,6 +56,7 @@ jobs:
           # sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
       - name: Install kenzo_packages
         run: |
+          cd $LEDE_PATH
           sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
       - name: Update feeds
