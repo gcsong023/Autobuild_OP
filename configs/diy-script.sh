@@ -107,7 +107,7 @@ sed -i 's/+uhttpd +uhttpd-mod-ubus //g' feeds/luci/collections/luci/Makefile
 # svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
 # sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 # sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
-sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
+sed -i '$a src-git kiddin https://github.com/kiddin9/openwrt-packages' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 # chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
