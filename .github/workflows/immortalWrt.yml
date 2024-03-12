@@ -22,7 +22,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: X86_64
+  FIRMWARE_TAG: X86_64_ImmortalWrt
   TZ: Asia/Shanghai
 
 jobs:
@@ -183,8 +183,8 @@ jobs:
       with:
         name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
         allowUpdates: true
-        # tag: ${{ env.FIRMWARE_TAG }}
-        tag: x86_64_immortalWrt
+        tag: ${{ env.FIRMWARE_TAG }}
+        # tag: x86_64_immortalWrt
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
