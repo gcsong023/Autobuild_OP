@@ -99,8 +99,12 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddn
 #dockerman
 git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-dockerman 
 
-# nginx-manager luci-app-easyupdate
-git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-nginx-manager luci-app-easyupdate
+# nginx-manager luci-app-easyupdate 
+git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-nginx-manager 
+
+# 修改nginx文件上传128M限制
+
+sed -i "s/128M/0M/g" ./feeds/packages/net/nginx-util/files/uci.conf.template
 
 # x86 型号只显示 CPU 型号
 sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
