@@ -1,7 +1,7 @@
 
 ## 项目说明 [![](https://img.shields.io/badge/-项目基本介绍-FFFFFF.svg)](#项目说明-)
 - 本仓库固件为自用固件方便升级而fork。
-- 固件构成：[![Lean](https://img.shields.io/badge/Lede-Lean-ff69b4.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) [![immortalwrt](https://img.shields.io/badge/Project-immortalWrt-ff69b4.svg?style=flat&logo=appveyor)](https://github.com/immortalwrt/immortalwrt) [![P3TERX](https://img.shields.io/badge/OpenWrt-P3TERX-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/P3TERX/Actions-OpenWrt) [![kiddin](https://img.shields.io/badge/Package-kiddin-orange.svg?style=flat&logo=appveyor)](https://github.com/kiddin9/openwrt-packages) [![Haiibo](https://img.shields.io/badge/Build-csong-32C955.svg?style=flat&logo=appveyor)](https://github.com/haiibo/OpenWrt)
+- 固件构成：[![Lean](https://img.shields.io/badge/Lede-Lean-ff69b4.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) [![immortalwrt](https://img.shields.io/badge/Project-immortalWrt-ff69b4.svg?style=flat&logo=appveyor)](https://github.com/immortalwrt/immortalwrt) [![P3TERX](https://img.shields.io/badge/OpenWrt-P3TERX-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/P3TERX/Actions-OpenWrt) [![kiddin](https://img.shields.io/badge/Package-kiddin-orange.svg?style=flat&logo=appveyor)](https://github.com/kiddin9/openwrt-packages) [![Haiibo](https://img.shields.io/badge/Build-haiibo-32C955.svg?style=flat&logo=appveyor)](https://github.com/haiibo/OpenWrt)
 - Lede固件使用 Github Actions 拉取 [Lean](https://github.com/coolsnowwolf/lede) 的 Openwrt 源码仓库进行云编译
 - immortalWrt固件使用 Github Actions 拉取 [immortalWrt](https://github.com/immortalwrt/immortalwrt) 的 TAG V23.05.1 源码仓库进行云编译
 - immortalWrt固件内核保持与官方内核一致，支持官方镜像站安装插件，不支持固件升级。
