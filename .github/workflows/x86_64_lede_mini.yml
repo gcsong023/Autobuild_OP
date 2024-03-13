@@ -1,4 +1,4 @@
-name: X86_64_lede
+name: X86_64_lede_mini
 
 on:
   workflow_dispatch:
