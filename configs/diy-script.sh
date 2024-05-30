@@ -101,6 +101,7 @@ git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-dock
 
 # nginx-manager luci-app-easyupdate 
 git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-nginx-manager 
+git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-easyupdate
 
 # 修改nginx文件上传128M限制
 
