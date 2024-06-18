@@ -6,7 +6,7 @@
 - immortalWrt固件使用 Github Actions 拉取 [immortalWrt](https://github.com/immortalwrt/immortalwrt) 的 TAG V23.05.1 源码仓库进行云编译
 - immortalWrt固件内核保持与官方内核一致，支持官方镜像站安装插件，不支持固件升级。
 - 固件默认管理地址：`192.168.5.1` 默认用户：`root` 默认密码：`password`
-- 分区大小： 32M + 1004M
+- 分区大小： 32M + 2016M
 
 
 ## 特别提示 [![](https://img.shields.io/badge/-个人免责声明-FFFFFF.svg)](#特别提示-)
