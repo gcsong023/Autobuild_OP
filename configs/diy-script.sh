@@ -13,7 +13,7 @@ sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generat
 # 移除要替换的包
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/msd_lite
-#rm -rf feeds/packages/net/smartdns
+# rm -rf feeds/packages/net/smartdns
 #rm -rf feeds/luci/themes/luci-theme-argon
 #rm -rf feeds/luci/themes/luci-theme-netgear
 #rm -rf feeds/luci/applications/luci-app-mosdns
@@ -57,8 +57,8 @@ git_sparse_clone main https://github.com/kenzok8/small-package redsocks2 lua-net
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # SmartDNS
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
-git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
+# git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
+# git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 #ssh 防护
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-beardropper 
 
