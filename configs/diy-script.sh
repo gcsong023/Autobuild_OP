@@ -57,8 +57,8 @@ git_sparse_clone main https://github.com/kenzok8/small-package redsocks2 lua-net
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # SmartDNS
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
-git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
+# git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
+# git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 #ssh 防护
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-beardropper 
 
@@ -101,7 +101,7 @@ git_sparse_clone main https://github.com/sirpdboy/sirpdboy-package luci-app-dock
 
 # nginx-manager luci-app-easyupdate 
 git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-nginx-manager 
-git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-easyupdate
+# git_sparse_clone master  https://github.com/sundaqiang/openwrt-packages luci-app-easyupdate
 
 # 修改nginx文件上传128M限制
 
