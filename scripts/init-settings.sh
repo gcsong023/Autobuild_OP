@@ -4,6 +4,10 @@
 uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit luci
 
+# Set Lan IP 
+uci set network.lan.ipaddr='192.168.5.1'
+uci commit network
+
 # Disable IPV6 ula prefix
 # sed -i 's/^[^#].*option ula/#&/' /etc/config/network
 
